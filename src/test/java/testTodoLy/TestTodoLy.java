@@ -3,10 +3,7 @@ package testTodoLy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import pagestodoly.LeftSectionPrincipalPage;
-import pagestodoly.LoginModal;
-import pagestodoly.MainPage;
-import pagestodoly.MenuSection;
+import pagestodoly.*;
 
 public class TestTodoLy extends BaseTodoLy {
 
@@ -15,11 +12,12 @@ public class TestTodoLy extends BaseTodoLy {
     LoginModal loginModal= new LoginModal();
     MenuSection menuSection = new MenuSection();
     LeftSectionPrincipalPage leftSectionPrincipalPage = new LeftSectionPrincipalPage();
+    PrincipalPage principalPage = new PrincipalPage();
 
 
 
     @Test
-    public void DeleteRecycleBin (){
+    public void DeleteRecycleBin () throws InterruptedException {
 
         mainPage.loginImage.click();
         loginModal.emailTxtBox.setText("2doparcial@gmail.com");
@@ -30,6 +28,11 @@ public class TestTodoLy extends BaseTodoLy {
 
 
         leftSectionPrincipalPage.RecycleBinButton.click();
+        leftSectionPrincipalPage.optionRecycleButton.click();
+        Thread.sleep(1000);
+        leftSectionPrincipalPage.EmptyRecycleButton.click();
+
+        System.out.println(principalPage.RecycleText.getTextControl());
 
 
 
