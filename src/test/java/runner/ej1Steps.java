@@ -20,7 +20,7 @@ public class ej1Steps {
     }
 
 
-    @When("Envio una peticion POST a https://todo.ly/api/user.json con")
+    @When("Envio una peticion POST a {} con")
     public void envioUnaPeticionPOSTAHttpsTodoLyApiUserJsonConElJson(String url , String body){
 
         response = given()
@@ -39,6 +39,19 @@ public class ej1Steps {
     @And("reviso que la respuesta contenga el FullName igual a {string}")
     public void revisoQueEnElResponseElFullNameSea(String name) {
         Assert.assertEquals("Error: No se pudo crear o actualizar el ususario", name, response.then().extract().path("FullName"));
+    }
+
+
+    @When("Envio una peticion PUT  a {} autentificando con el usuario {string} y pwd {string} con el json")
+    public void envioUnaPeticionPUTAHttpsTodoLyApiUserJsonAutentificadoConElUsuarioYContrasenaConElJson(String url, String usr, String pwd, String body) {
+        response = given().
+                auth().
+                preemptive().
+                basic(usr, pwd).
+                contentType(ContentType.JSON).
+                body(body).
+                log().all().
+                when().put(url);
     }
 
 
