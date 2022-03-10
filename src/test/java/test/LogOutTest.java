@@ -8,6 +8,9 @@ import pages.TopPrincipalPage;
 
 public class LogOutTest  extends BaseTodoIst{
 
+
+    //EJERCICIO 6
+
     TopMainPage topMainPage = new TopMainPage();
     LoginPage loginPage = new LoginPage();
     TopPrincipalPage topPrincipalPage = new TopPrincipalPage();
